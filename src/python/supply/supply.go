@@ -90,6 +90,11 @@ func RunPython(s *Supplier) error {
 		return err
 	}
 
+	if err := s.InstallRclone(); err != nil {
+		s.Log.Error("Could not install Rclone: %v", err)
+		return err
+	}
+
 	if err := s.InstallPython(); err != nil {
 		s.Log.Error("Could not install python: %v", err)
 		return err
@@ -815,4 +820,24 @@ func (s *Supplier) hasBuildOptions() bool {
 
 func indentWriter(writer io.Writer) io.Writer {
 	return text.NewIndentWriter(writer, []byte("       "))
+}
+
+func (s *Supplier) InstallRclone() error {
+
+	s.Log.Info("------> Installing Rclone")
+
+	cmd := exec.Command("curl", "https://rclone.org/install.sh", "|", "sudo", "bash")
+	output, err := cmd.CombinedOutput()
+
+	if err != nil {
+		msg := fmt.Sprintf("Rclone installation failed due to: \n %s", output)
+		s.Log.Debug("[Rclone Installation Error]: %s", err)
+		s.Log.Debug(msg)
+		return err
+	} else {
+		msg := fmt.Sprintf("\n %s", output)
+		s.Log.Info(msg)
+		s.Log.Info("------> Rclone installed ")
+	}
+	return nil
 }

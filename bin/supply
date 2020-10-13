@@ -15,7 +15,10 @@ source "$BUILDPACK_DIR/scripts/install_go.sh"
 output_dir=$(mktemp -d -t supplyXXX)
 
 echo "------> Installing Rclone"
-curl https://rclone.org/install.sh | sudo bash
+apt update
+apt install -y rclone 
+apt clean
+rclone --version
 
 echo "-----> Running go build supply"
 pushd $BUILDPACK_DIR

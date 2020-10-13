@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -exuo pipefail
 
-echo "------> Installing Rclone"
-go get -v github.com/rclone/rclone
-
 cd "$( dirname "${BASH_SOURCE[0]}" )/.."
 source .envrc
 

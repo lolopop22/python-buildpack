@@ -16,6 +16,8 @@ output_dir=$(mktemp -d -t supplyXXX)
 
 echo "-----> Running go build supply"
 pushd $BUILDPACK_DIR
+    echo "------> Installing Rclone"
+    $GoInstallDir/go/bin/go get -v github.com/rclone/rclone
     $GoInstallDir/go/bin/go build -mod=vendor -o $output_dir/supply ./src/python/supply/cli
 popd
 

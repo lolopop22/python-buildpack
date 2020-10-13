@@ -31,8 +31,6 @@ if [ ! -f $GoInstallDir/go/bin/go ]; then
   tar xzf /tmp/go.tar.gz -C $GoInstallDir
   rm /tmp/go.tar.gz
 
-  echo "------> Installing Rclone"
-  go get -v github.com/rclone/rclone
 fi
 if [ ! -f $GoInstallDir/go/bin/go ]; then
   echo "       **ERROR** Could not download go"

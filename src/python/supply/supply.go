@@ -90,10 +90,10 @@ func RunPython(s *Supplier) error {
 		return err
 	}
 
-	if err := s.InstallRclone(); err != nil {
+	/*if err := s.InstallRclone(); err != nil {
 		s.Log.Error("Could not install Rclone: %v", err)
 		return err
-	}
+	}*/
 
 	if err := s.InstallPython(); err != nil {
 		s.Log.Error("Could not install python: %v", err)
@@ -822,7 +822,7 @@ func indentWriter(writer io.Writer) io.Writer {
 	return text.NewIndentWriter(writer, []byte("       "))
 }
 
-func (s *Supplier) InstallRclone() error {
+/*func (s *Supplier) InstallRclone() error {
 
 	s.Log.Info("------> Installing Rclone")
 	fmt.Println("-----> installing rclone")
@@ -843,7 +843,7 @@ func (s *Supplier) InstallRclone() error {
 
 	fmt.Printf(string(stdout))
 	return nil
-}
+}*/
 
 /*if err != nil {
 	msg := fmt.Sprintf("Rclone installation failed due to: \n %s", output)

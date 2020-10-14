@@ -841,9 +841,8 @@ func (s *Supplier) InstallRclone() error {
 		return err
 	}
 
-	return nil
-
 	fmt.Printf(string(stdout))
+	return nil
 }
 
 /*if err != nil {
